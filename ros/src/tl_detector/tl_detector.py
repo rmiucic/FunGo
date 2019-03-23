@@ -60,7 +60,7 @@ class TLDetector(object):
         self.ros_spin()
 
     def ros_spin(self):
-	    rate = rospy.Rate(1)
+	    rate = rospy.Rate(5)
 	    while not rospy.is_shutdown():
 	        '''Publish upcoming red lights at camera frequency.
 	        Each predicted state has to occur `STATE_COUNT_THRESHOLD` number
