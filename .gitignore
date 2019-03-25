@@ -9,3 +9,4 @@ ros/src/twist_controller/twist_controller.pyc
 ros/src/twist_controller/lowpass.pyc
 .ipynb_checkpoints/
 *.pyc
+ros/.vscode/

@@ -59,29 +59,34 @@ class TLDetector(object):
         self.ros_spin()
 
     def ros_spin(self):
-	    rate = rospy.Rate(5)
-	    while not rospy.is_shutdown():
-	        '''Publish upcoming red lights at camera frequency.
-	        Each predicted state has to occur `STATE_COUNT_THRESHOLD` number
-	        of times till we start using it. Otherwise the previous stable state is
-	        used.
-	        '''
-	        if self.pose is not None and self.waypoints is not None and self.camera_image is not None:
-	            light_wp, state = self.process_traffic_lights()
-	            #print("Light waypoint Index: ",light_wp, "Traffic Light: ",TrafficLight.RED, state)
-	            if self.state != state:
-	                self.state_count = 0
-	                self.state = state
-	            elif self.state_count >= STATE_COUNT_THRESHOLD:
-	                self.last_state = self.state
-	                light_wp = light_wp if state == TrafficLight.RED else -1
-	                self.last_wp = light_wp
-	                self.upcoming_red_light_pub.publish(Int32(light_wp))
-	                #print(light_wp,self.state_count)
-	            else:
-	                self.upcoming_red_light_pub.publish(Int32(self.last_wp))
-	            self.state_count += 1
-	        rate.sleep()
+        rate = rospy.Rate(5)
+        while not rospy.is_shutdown():
+            '''Publish upcoming red lights at camera frequency.
+            Each predicted state has to occur `STATE_COUNT_THRESHOLD` number
+            of times till we start using it. Otherwise the previous stable state is
+            used.
+            '''
+            rospy.logwarn("self.pose is not: {0} ".format(self.pose is not None))
+            rospy.logwarn("self.waypoints is not: {0} ".format(self.waypoints is not None))
+            rospy.logwarn("self.camera_image: {0} ".format(self.camera_image is not None))
+            #rospy.logwarn("before if: {0} ".format(rate))
+            if self.pose is not None and self.waypoints is not None and self.camera_image is not None:
+                #rospy.logwarn("after if: {0} ".format(rate))
+                light_wp, state = self.process_traffic_lights()
+                #print("Light waypoint Index: ",light_wp, "Traffic Light: ",TrafficLight.RED, state)
+                if self.state != state:
+                    self.state_count = 0
+                    self.state = state
+                elif self.state_count >= STATE_COUNT_THRESHOLD:
+                    self.last_state = self.state
+                    light_wp = light_wp if state == TrafficLight.RED else -1
+                    self.last_wp = light_wp
+                    self.upcoming_red_light_pub.publish(Int32(light_wp))
+                    #print(light_wp,self.state_count)
+                else:
+                    self.upcoming_red_light_pub.publish(Int32(self.last_wp))
+                self.state_count += 1
+            rate.sleep()
 
     def pose_cb(self, msg):
         self.pose = msg
