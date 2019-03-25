@@ -6,9 +6,13 @@ import rospy
 
 
 class TLClassifier(object):
-    def __init__(self,is_sim):
+    def __init__(self,is_site):
         #TODO load classifier
-        PATH_TO_GRAPH = r'light_classification/models/sim/frozen_inference_graph.pb'
+        if is_site:
+            PATH_TO_GRAPH = r'light_classification/models/real/frozen_inference_graph.pb'
+        else:
+            PATH_TO_GRAPH = r'light_classification/models/sim/frozen_inference_graph.pb'
+
         self.graph = tf.Graph()
         self.threshold = .5
 
