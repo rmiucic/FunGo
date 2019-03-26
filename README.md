@@ -299,9 +299,6 @@ geometry_msgs/Pose pose
 ```
 
 
-1. System Setup
-1.1 Hardware
-1.2 Software
 
 ---
 # Original Udacity Read.me
