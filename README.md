@@ -219,9 +219,10 @@ For the simulator data, I drove around the track in the simulator and recorded a
 I used [labelImg][labelImg]. It's very user-friendly and easy to set up. Here is an example of a labeled image
 ![labeling a traffic light][labeling img] 
 
-All the tarining and validation files are stored in TFRecord file. TFRecord file is needed in order to retrain a TensorFlow model. A TFRecord is a binary file that stores images and ground truth labels. I have used [ssd_inception_v2_coco_2017_11_17][ssd inception 171117] model and retrained it. I took about 6 hours to train the NN.  
+All the tarining and validation files are stored in TFRecord file. TFRecord file is needed in order to retrain a TensorFlow model. A TFRecord is a binary file that stores images and ground truth labels. I have used [ssd_inception_v2_coco_2017_11_17][ssd inception 171117] model and retrained it. I took about 6 hours to train the NN. I am using two different instances of the classifier: one for simulation environment and one for the real life environment. 
 
 ### 4. Performance Videos
+
 #### 4.1 Simulation Test
 In the [simulation video][simulation video] you can see performance of autonomous driving in the Udacity simulation. Below the simulation screen is the terminal output showing the SSD classification results and time it took TensorFlow to compute it.
 
@@ -264,7 +265,7 @@ roslaunch launch/site.launch
 ![ROSBag test][real test]
 
 ### 5. ROS-Commands
-Useful ROS commands
+Useful ROS commands<br>
 **rostopic info /current_pose** -> get more info on the topic
 ```bash
 radovan@radovan-GS63VR-6RF:~/git/rmiucic/FunGo$ rostopic info /current_pose 
