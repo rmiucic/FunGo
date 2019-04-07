@@ -59,16 +59,16 @@ class TLDetector(object):
         self.ros_spin()
 
     def ros_spin(self):
-        rate = rospy.Rate(5)
+        rate = rospy.Rate(10)
         while not rospy.is_shutdown():
             '''Publish upcoming red lights at camera frequency.
             Each predicted state has to occur `STATE_COUNT_THRESHOLD` number
             of times till we start using it. Otherwise the previous stable state is
             used.
             '''
-            rospy.logwarn("self.pose is not: {0} ".format(self.pose is not None))
-            rospy.logwarn("self.waypoints is not: {0} ".format(self.waypoints is not None))
-            rospy.logwarn("self.camera_image: {0} ".format(self.camera_image is not None))
+#            rospy.logwarn("self.pose is not: {0} ".format(self.pose is not None))
+#            rospy.logwarn("self.waypoints is not: {0} ".format(self.waypoints is not None))
+#            rospy.logwarn("self.camera_image: {0} ".format(self.camera_image is not None))
             #rospy.logwarn("before if: {0} ".format(rate))
             if self.pose is not None and self.waypoints is not None and self.camera_image is not None:
                 #rospy.logwarn("after if: {0} ".format(rate))

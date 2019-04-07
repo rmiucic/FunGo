@@ -55,8 +55,8 @@ class TLClassifier(object):
         scores = np.squeeze(scores)
         classes = np.squeeze(classes).astype(np.int32)
 
-        rospy.logwarn("SCORES: {0}".format(scores[0]))
-        rospy.logwarn("CLASSES: {0}".format(classes[0]))
+#        rospy.logwarn("SCORES: {0}".format(scores[0]))
+#        rospy.logwarn("CLASSES: {0}".format(classes[0]))
 
         TL = TrafficLight.UNKNOWN
         if scores[0] > self.threshold:

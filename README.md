@@ -159,7 +159,25 @@ geometry_msgs/Pose pose
     float64 z
     float64 w
 ```
-
+**rosbag info 1767290_2019-03-28-21-05-48.bag** -> get the information about the ROS bag 
+```shell
+radovan@radovan-GS63VR-6RF:/media/radovan/Linux_HD/udacity/FunGo_review$ rosbag info 1767290_2019-03-28-21-05-48.bag 
+path:        1767290_2019-03-28-21-05-48.bag
+version:     2.0
+duration:    1:23s (83s)
+start:       Mar 29 2019 00:05:48.57 (1553832348.57)
+end:         Mar 29 2019 00:07:12.37 (1553832432.37)
+size:        2.8 GB
+messages:    213610
+compression: none [2054/2054 chunks]
+types:       actionlib_msgs/GoalStatusArray           [8b2b82f13216d0a8ea88bd3af735e619]
+             bond/Status                              [eacc84bf5d65b6777d4c50f463dfb9c8]
+             can_msgs/Frame                           [64ae5cebf967dc6aae4e78f5683a5b25]
+             dbw_mkz_msgs/BrakeCmd                    [c0d20e1056976680942e85ab0959826c]
+             dbw_mkz_msgs/BrakeInfoReport             [fc88af128b5b3213ea25ab325a9b3bbb]
+             dbw_mkz_msgs/BrakeReport                 [a92bad28c400885f36170c1cab44618e]
+...
+```
 
 1. System Setup
 1.1 Hardware
